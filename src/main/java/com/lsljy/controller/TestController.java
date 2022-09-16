@@ -40,7 +40,7 @@ public class TestController {
 //
 //        return user;
 //    }
-
+//
     @RequestMapping(value = "/finduser", method = RequestMethod.POST, produces = "application/json;charset=UTF-8") //这里的method要设置为RequestMethod.POST
     public JSONObject creatClusterAndNodes(@RequestBody JSONObject jsonParam) throws JsonProcessingException {
 
