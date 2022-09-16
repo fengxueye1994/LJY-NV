@@ -32,6 +32,8 @@ public class TestController {
 
         return user;
     }
+
+//添加注释    
 //    @RequestMapping(value = "/finduser")
 //    public UserInf test1(){
 //        UserInf user = userService.selectUserById("123456789");
