@@ -6,5 +6,9 @@
     <settings>
         <!--自动映射驼峰命名规则-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+
+        <!--配置使数据库操作的sql在控制台打印-->
+        <setting  name="jdbcTypeForNull" value="NULL" />
+        <setting name="logImpl" value="STDOUT_LOGGING" />
     </settings>
 </configuration>

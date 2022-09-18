@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+<!--定义日志保存的路径 -->
+<springProperty scope="context" name="LOG_PATH" source="logPath" />
+
+<conversionRule conversionWord="clr"
+                converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+<conversionRule conversionWord="wex"
+                converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+<conversionRule conversionWord="wEx"
+                converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+<springProperty scope="context" name="SERVER_PORT" source="server.port"/>
+<springProperty scope="context" name="SERVER_ADDRESS" source="server.address"/>
+<springProperty scope="context" name="SERVICE_CODE" source="serviceCode"/>
+<property name="CONSOLE_LOG_PATTERN"
+          value="${CONSOLE_LOG_PATTERN:-%clr(%d{HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />
+<!--<property name="FILE_LOG_PATTERN"-->
+<!--          value="${FILE_LOG_PATTERN:-%d{yyyy-MM-dd HH:mm:ss.SSS} ${LOG_LEVEL_PATTERN:-%5p} ${SERVER_ADDRESS}:${SERVER_PORT} ${PID:- } -&#45;&#45; [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}" />-->
+<!--​-->
+<!--输出到控制台 -->
+<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+    <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+        <level>INFO</level>
+    </filter>
+    <encoder>
+        <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+    </encoder>
+</appender>
+​
+<!--服务启动日志-->
+<!--<appender name="EC_GENERATOR_SERVICE_LOG_FILE" class="ch.qos.logback.classic.sift.SiftingAppender">-->
+<!--    <discriminator>-->
+<!--        <Key>serviceLogName</Key>-->
+<!--        <DefaultValue>serviceLogName</DefaultValue>-->
+<!--    </discriminator>-->
+<!--    <sift>-->
+<!--        <appender name="EC_SERVCIE_LOG_FILE" class="ch.qos.logback.core.FileAppender">-->
+<!--            <file>${LOG_PATH}/publish/${serviceLogName}.log</file>-->
+<!--            <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">-->
+<!--                <Pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}] %-5level %logger{80} [%X{EC.Entity}] - %msg %ex%n</Pattern>-->
+<!--            </encoder>-->
+<!--        </appender>-->
+<!--    </sift>-->
+<!--</appender>-->
+​
+<logger level="debug" additivity="false" name="ch.qos.logback.core.ConsoleAppender">
+    <appender-ref ref="console" />
+</logger>
+<!-- 生产环境，将此级别配置为适合的级别，以防日志文件太多或影响程序性能 -->
+<root level="debug">
+    <appender-ref ref="console" />
+</root>
+​
+</configuration>

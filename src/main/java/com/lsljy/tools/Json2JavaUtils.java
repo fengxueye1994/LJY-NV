@@ -1,11 +1,19 @@
 package com.lsljy.tools;
 
 import com.alibaba.fastjson.JSONObject;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.util.Date;
 
+/**
+ * 通用工具，请求报文JSON转换为对应的对象
+ */
 public class Json2JavaUtils {
+
+    @Autowired
+    private ObjectMapper ObjectMapper;
 
     public static <T> T json2Object(JSONObject json, Class<T> model) {
         try{
@@ -46,4 +54,9 @@ public class Json2JavaUtils {
             throw  new RuntimeException("格式化数据错误");
         }
     }
+
+    public static <T> T obj2Json(JSONObject json, Class<T> model) {
+        return null;
+    }
+
 }

@@ -1,0 +1,4 @@
+uri:
+  dataMap:
+    FW0001: /user/list
+    FW0002: /user/finduser

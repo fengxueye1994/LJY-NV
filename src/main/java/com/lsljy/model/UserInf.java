@@ -1,6 +1,6 @@
 package com.lsljy.model;
 
-public class UserInf {
+public class UserInf{
     private String userId;//用户编号
     private String headPhoto;//头像编号
     private String petName;//昵称
