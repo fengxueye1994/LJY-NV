@@ -44,11 +44,11 @@
 <!--    </sift>-->
 <!--</appender>-->
 ​
-<logger level="debug" additivity="false" name="ch.qos.logback.core.ConsoleAppender">
-    <appender-ref ref="console" />
-</logger>
+<!--<logger level="debug" additivity="false" name="ch.qos.logback.core.ConsoleAppender">-->
+<!--    <appender-ref ref="console" />-->
+<!--</logger>-->
 <!-- 生产环境，将此级别配置为适合的级别，以防日志文件太多或影响程序性能 -->
-<root level="debug">
+<root level="info">
     <appender-ref ref="console" />
 </root>
 ​
