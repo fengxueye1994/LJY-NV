@@ -13,16 +13,20 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.sql.DataSource;
 
 /**
  * @author sunql
  * @description controller层
  * @date 2020/12/29 15:30
  */
+@WebAppConfiguration
 @Slf4j
 @Controller
 @RestController
@@ -31,6 +35,10 @@ public class UserController {
     private final static Logger logger = LoggerFactory.getLogger(UserController.class);
     @Autowired
     private UserService userService;
+    @Autowired
+    private DataSource dataSource;
+
+
 //    @Autowired
 //    private ConfigKo configKo;
 //(value = "/user")
@@ -68,7 +76,7 @@ public class UserController {
         return JSON.parseObject(bb);
     }
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
-    public JSONObject registerUser(@RequestBody JSONObject jsonParam)  {
+    public JSONObject registerUser(@RequestBody JSONObject jsonParam) {
         ResponseMsg res = new ResponseMsg();
         try {
             UserInf user1 = Json2JavaUtils.json2Object(jsonParam, UserInf.class);//json对象转换为java对象
@@ -77,6 +85,8 @@ public class UserController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+
+
 //        ObjectMapper aa = new ObjectMapper();
 //        String bb = aa.writeValueAsString(user);
 //        UserInf aaa = res.getUserInf();
