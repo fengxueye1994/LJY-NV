@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <trees>
+     <tree path="/src/main/java/com/lsljy/controller/UserController.java" title="用户信息模块接口" extension="java"/>
+     <tree path="/src/main/java/com/lsljy/mapper" title="库表映射接口"/>
+     <tree path="/src/main/java/com/lsljy/model" title="库表映射模型类"/>
+     <tree path="/src/main/java/com/lsljy/service" title="业务层"/>
+     <tree path="/src/main/java/com/lsljy/tools" title="工具类"/>
+     <tree path="/src/main/java/com/lsljy/config" title="配置以及切面功能配置类"/>
+     <tree path="/src/main/java/com/lsljy/config/aop/ControllerAop.java" title="请求与响应报文Aop打印" extension="java"/>
+     <tree path="/src/main/java/com/lsljy/config/aop/DruidConfig.java" title="数据库连接池bean初始化" extension="java"/>
+     <tree path="/src/main/java/com/lsljy/config/aop/RedisConfig.java" title="redis集群连接池bean初始化" extension="java"/>
+     <tree path="/src/main/java/com/lsljy/config/RequestMsg.java" title="封装请求报文接口体" extension="java"/>
+     <tree path="/src/main/java/com/lsljy/config/ResponseMsg.java" title="封装响应报文接口体" extension="java"/>
+    <tree path="/src/main/java/com/lsljy/mapper/UserInfMapper.java" title="用户信息表" extension="java"/>
+    <tree path="/src/main/java/com/lsljy/model/UserInf.java" title="用户信息实体" extension="java"/>
+    <tree path="/src/main/java/com/lsljy/service/impl/UserServiceImpl.java" title="用户模块impl" extension="java"/>
+    <tree path="/src/main/java/com/lsljy/tools/Json2JavaUtils.java" title="Json工具" extension="java"/>
+    <tree path="/src/main/resources/logback-global.xml" title="项目自带日志logback的全局配置文件" extension="xml"/>
+    <tree path="/src/main/java/com/lsljy/component/SimpleCORSFilter.java" title="http请求格式跨域配置类" extension="java"/>
+</trees>

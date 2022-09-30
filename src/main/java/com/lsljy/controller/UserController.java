@@ -12,12 +12,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.sql.DataSource;
 
@@ -26,8 +23,7 @@ import javax.sql.DataSource;
  * @description controller层
  * @date 2020/12/29 15:30
  */
-@WebAppConfiguration
-@Slf4j
+@Slf4j//这个是logback注解，加上之后可以直接使用log来打印日志
 @Controller
 @RestController
 @RequestMapping(value = "/user")
@@ -38,7 +34,12 @@ public class UserController {
     @Autowired
     private DataSource dataSource;
 
-
+    //1.指定存储类型(redis)
+    @Autowired
+    private RedisTemplate<String,Object> redisTemplate;
+//    //2.未指定存储类型
+//    @Autowired
+//    private RedisTemplate redisTemplate1;
 //    @Autowired
 //    private ConfigKo configKo;
 //(value = "/user")
@@ -76,6 +77,7 @@ public class UserController {
         return JSON.parseObject(bb);
     }
     @RequestMapping(value = "/registerUser", method = RequestMethod.POST)
+    @ResponseBody
     public JSONObject registerUser(@RequestBody JSONObject jsonParam) {
         ResponseMsg res = new ResponseMsg();
         try {
@@ -85,6 +87,12 @@ public class UserController {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
+
+        String aa = (String) redisTemplate.opsForValue().get("ljy");
+        redisTemplate.opsForValue().set("ljy", "蓝洁瑛");
+        System.out.println("数据："+aa);
+        aa = (String) redisTemplate.opsForValue().get("ljy");
+        System.out.println("数据："+aa);
 
 
 //        ObjectMapper aa = new ObjectMapper();

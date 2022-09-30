@@ -53,7 +53,7 @@ public class ControllerAop {
         result = JSON.toJSONString((result instanceof Result ? (Result) result : result), SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteDateUseDateFormat);
         //打印请求报文
-        logger.info(requestClassNm +"\n"+ ">>>>>>>>>>>>>>>>>>>>请求报文："+"\n" + result);
+        logger.info(requestClassNm +"\n"+ ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>【【【【【【【请求报文】】】】】】】:"+"\n" + result);
 
         // 执行目标方法
         result = pjd.proceed();
@@ -63,7 +63,7 @@ public class ControllerAop {
         result = JSON.toJSONString((result instanceof Result ? (Result) result : result), SerializerFeature.PrettyFormat, SerializerFeature.WriteMapNullValue,
                 SerializerFeature.WriteDateUseDateFormat);
         // 获取执行完的时间
-        logger.info(requestClassNm+"\n"+">>>>>>>>>>>>>>>>>>>>响应报文:"+"\n"+result);
+        logger.info(requestClassNm+"\n"+">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>【【【【【【【响应报文】】】】】】】:"+"\n"+result);
         logger.info(requestClassNm.substring(requestClassNm.lastIndexOf(".")+1) + "请求耗时:" + (System.currentTimeMillis() - start));
         return  JSONObject.parseObject(String.valueOf(result));//将报文返回给前端，需要转换为JsonObject类型
     }
